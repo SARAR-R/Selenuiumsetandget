@@ -34,7 +34,7 @@ namespace SeleniumFirst
 
             SeleniumSetMethods.Entertext(d, "Initial", "Execute", "Name");
 
-            Console.WriteLine("The value of title is " + SeleniumGetMethods.GetText(d, "TitleId", "Id"));
+            Console.WriteLine("The value of title is " + SeleniumGetMethods.GetTextselect(d, "TitleId", "Id"));
 
             Console.WriteLine("Name " + SeleniumGetMethods.GetText(d, "Initial", "Name"));
 
