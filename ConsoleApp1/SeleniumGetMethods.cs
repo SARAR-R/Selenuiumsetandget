@@ -10,22 +10,22 @@ namespace SeleniumFirst
 {
    public class SeleniumGetMethods
     {
-        public static string GetText(IWebDriver d,String e, string elementtype)
+        public static string GetText(String e, PropertyType elementtype)
         {
-            if (elementtype == "Id")
-                return d.FindElement(By.Id(e)).GetAttribute("value");
-            if (elementtype == "Name")
-                return d.FindElement(By.Name(e)).GetAttribute("value");
+            if (elementtype == PropertyType.Id)
+                return Propcollections.driver.FindElement(By.Id(e)).GetAttribute("value");
+            if (elementtype == PropertyType.Name)
+                return Propcollections.driver.FindElement(By.Name(e)).GetAttribute("value");
             else return string.Empty;
 
         }
 
-        public static string GetTextselect(IWebDriver d, String e, string elementtype)
+        public static string GetTextselect(String e, PropertyType elementtype)
         {
-            if (elementtype == "Id")
-                return new SelectElement(d.FindElement(By.Id(e))).AllSelectedOptions.SingleOrDefault().Text;
-            if (elementtype == "Name")
-                return new SelectElement(d.FindElement(By.Name(e))).AllSelectedOptions.SingleOrDefault().Text;
+            if (elementtype == PropertyType.Id)
+                return new SelectElement(Propcollections.driver.FindElement(By.Id(e))).AllSelectedOptions.SingleOrDefault().Text;
+            if (elementtype == PropertyType.Name)
+                return new SelectElement(Propcollections.driver.FindElement(By.Name(e))).AllSelectedOptions.SingleOrDefault().Text;
             else return string.Empty;
 
         }
