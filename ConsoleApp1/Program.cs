@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using SeleniumFirst;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -21,25 +22,44 @@ namespace SeleniumFirst
         public void Start()
         {
            Propcollections.driver = new ChromeDriver();
-            Propcollections.driver.Navigate().GoToUrl("http://executeautomation.com/demosite/index.html");
+            Propcollections.driver.Navigate().GoToUrl("http://executeautomation.com/demosite/Login.html");
         }
 
         [Test]
         public void Operation()
         {
 
-            //IWebElement e = Propcollections.driver.FindElement(By.Name("q"));
-            //e.SendKeys("hi");
+            //Login to Application
 
-            SeleniumSetMethods.SelectDropDown("TitleId", "Mr.", PropertyType.Id);
+            LoginPageObject pageLogin = new LoginPageObject();
+            EAPageObject pageEA = pageLogin.Login("Excute", "Auto");
+          // EAPageObject pageEA = new EAPageObject();
+            pageEA.FillUserform("hi", "Selenium", "automation");
+            
 
-            SeleniumSetMethods.Entertext("Initial", "Execute", PropertyType.Name);
 
-            Console.WriteLine("The value of title is " + SeleniumGetMethods.GetTextselect("TitleId", PropertyType.Id));
 
-            Console.WriteLine("Name " + SeleniumGetMethods.GetText("Initial", PropertyType.Name));
+            //Initialize the page by calling its reference
+            EAPageObject page = new EAPageObject();
 
-            SeleniumSetMethods.Click("Save", PropertyType.Name);
+            page.txtInitial.SendKeys("Execute");
+
+            page.btnSave.Click();
+
+
+
+            ////IWebElement e = Propcollections.driver.FindElement(By.Name("q"));
+            ////e.SendKeys("hi");
+
+            //SeleniumSetMethods.SelectDropDown("TitleId", "Mr.", PropertyType.Id);
+
+            //SeleniumSetMethods.Entertext("Initial", "Execute", PropertyType.Name);
+
+            //Console.WriteLine("The value of title is " + SeleniumGetMethods.GetTextselect("TitleId", PropertyType.Id));
+
+            //Console.WriteLine("Name " + SeleniumGetMethods.GetText("Initial", PropertyType.Name));
+
+            //SeleniumSetMethods.Click("Save", PropertyType.Name);
 
         }
         [TearDown]
